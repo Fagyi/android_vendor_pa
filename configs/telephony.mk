@@ -21,6 +21,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SoundRecorder
 
-# Launcher packages
+# Build few CM packages
 PRODUCT_PACKAGES += \
+    CMFileManager \
     Launcher3
