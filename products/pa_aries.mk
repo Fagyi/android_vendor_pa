@@ -1,4 +1,4 @@
-# Copyright (C) 2013 ParanoidAndroid Project
+# Copyright (C) 2014 Paranoid Android Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,12 +13,15 @@
 # limitations under the License.
 
 # Check for target product
+ifeq (pa_aries,$(TARGET_PRODUCT))
 
-ifeq (pa_hikari,$(TARGET_PRODUCT))
+# Define PA bootanimation size
+PARANOID_BOOTANIMATION_NAME := XHDPI
 
 # OVERLAY_TARGET adds overlay asset source
 OVERLAY_TARGET := pa_xhdpi
 
+# Build paprefs from sources
 PREFS_FROM_SOURCE ?= false
 
 # Inherit telephony common stuff
@@ -27,15 +30,15 @@ $(call inherit-product, vendor/pa/configs/telephony.mk)
 # Include AOSPA common configuration
 include vendor/pa/main.mk
 
-# Inherit device configuration
-$(call inherit-product, device/sony/hikari/full_hikari.mk)
+# Inherit AOSP device configuration
+$(call inherit-product, device/xiaomi/aries/full_aries.mk)
 
 # Override AOSP build properties
-PRODUCT_NAME := pa_hikari
-PRODUCT_DEVICE := hikari
-PRODUCT_BRAND := Sony
-PRODUCT_MANUFACTURER := Sony
-PRODUCT_MODEL := Xperia Acro S
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=LT26w_1266-3204 PRODUCT_DEVICE=hikari BUILD_FINGERPRINT=SEMC/LT26w_1266-3204/LT26w:4.0.4/6.1.A.2.50/zfd_zw:user/release-keys PRIVATE_BUILD_DESC="LT26w-user 4.0.4 6.1.A.2.50 zfd_zw test-keys"
+PRODUCT_NAME := pa_aries
+PRODUCT_BRAND := Xiaomi
+PRODUCT_MODEL := MI 2
+PRODUCT_MANUFACTURER := XIAOMI
+TARGET_VENDOR_DEVICE_NAME := aries
+PRODUCT_GMS_CLIENTID_BASE := android-aries
 
 endif
